@@ -7,10 +7,11 @@ public class Banco {
 
     public static void menu() {
         System.out.println("1 - Ver extrato");
-        System.out.println("2 - Depositar");
-        System.out.println("3 - Sacar");
-        System.out.println("4 - Menu");
-        System.out.println("5 - Sair");
+        System.out.println("2 - Alterar nome");
+        System.out.println("3 - Depositar");
+        System.out.println("4 - Sacar");
+        System.out.println("5 - Menu");
+        System.out.println("6 - Sair");
     }
 
     public static void operacoes() {
@@ -42,13 +43,19 @@ public class Banco {
                         break;
 
                     case 2:
+                        String novoNome;
+                        novoNome = sc.nextLine();
+                        conta.alteraNome(novoNome);
+                        break;
+
+                    case 3:
                         double deposito;
                         System.out.println("Digite quanto deseja depositar:");
                         deposito = sc.nextDouble();
                         conta.deposito(deposito);
 
                         break;
-                    case 3:
+                    case 4:
                         double saque;
                         System.out.println("Digite quanto deseja sacar (taxa de R$3.00):");
                         saque = sc.nextDouble();
@@ -56,12 +63,12 @@ public class Banco {
 
                         break;
 
-                    case 4:
+                    case 5:
 
                         menu();
                         break;
 
-                    case 5:
+                    case 6:
                         System.out.println("Fechando o sistema!");
                         loop = false;
                         sc.close();

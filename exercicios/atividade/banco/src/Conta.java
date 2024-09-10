@@ -37,6 +37,12 @@ public class Conta {
         return cod_conta;
     }
 
+    public void alteraNome(String novoNome) {
+        setNome(novoNome);
+        System.out.println(String.format("Nome alterado para: %s", novoNome));
+
+    }
+
     public static String geraNumConta() {
         int digitos = 8;
         StringBuilder str = new StringBuilder();
