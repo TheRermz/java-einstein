@@ -38,6 +38,7 @@ public class Conta {
     }
 
     public void alteraNome(String novoNome) {
+
         setNome(novoNome);
         System.out.println(String.format("Nome alterado para: %s", novoNome));
 
@@ -57,21 +58,28 @@ public class Conta {
     public void geraConta() {
         cod_conta = geraCodigo();
         num_conta = geraNumConta();
-        retornaDados();
+        retornaDados(false);
     }
 
-    public void retornaDados() {
-        System.out.println("=============Sua Conta=============");
-        System.out.println(String.format("Número da conta: %s-1\nNome: %s\nSaldo atual: R$%.2f", num_conta, nomeConta,
-                saldoConta));
-        System.out.println("===================================");
+    public void retornaDados(boolean operacao) {
+        if (operacao == true) {
+            System.out
+                    .println(String.format("Número da conta: %s-1\nNome: %s\nSaldo atual: R$%.2f", num_conta, nomeConta,
+                            saldoConta));
+        } else {
+            System.out.println("=============Sua Conta=============");
+            System.out
+                    .println(String.format("Número da conta: %s-1\nNome: %s\nSaldo atual: R$%.2f", num_conta, nomeConta,
+                            saldoConta));
+            System.out.println("===================================");
+        }
 
     }
 
     public double deposito(double valor) {
         saldoConta += valor;
         System.out.println("=========Deposito Efetuado!=========");
-        retornaDados();
+        retornaDados(true);
         System.out.println("====================================");
         return saldoConta;
     }
@@ -84,14 +92,14 @@ public class Conta {
 
         if (saldoFinal < 0) {
             System.out.println("========Saldo insuficiente!========");
-            retornaDados();
+            retornaDados(true);
             System.out.println("===================================");
             return saldoConta;
         } else {
 
             System.out.println("==========Saque Efetuado!==========");
             saldoConta = saldoFinal;
-            retornaDados();
+            retornaDados(true);
             System.out.println("===================================");
             return saldoConta;
         }
