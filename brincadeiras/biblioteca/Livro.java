@@ -3,9 +3,14 @@ package brincadeiras.biblioteca;
 import java.util.Random;
 
 public class Livro {
-    String tituloLivro, nomeAutor, assunto, sinopse, codBarras;
-    int paginas, anoPublicacao;
-    private int idLivro = 0;
+    private String tituloLivro, nomeAutor, assunto, sinopse, codBarras;
+    private int paginas, anoPublicacao;
+    private int idLivro;
+    private static int contadorLivro = 0;
+
+    public Livro() {
+        this.idLivro = geraIdLivro();
+    }
 
     public int getAnoPublicacao() {
         return anoPublicacao;
@@ -67,6 +72,11 @@ public class Livro {
         return idLivro;
     }
 
+    private static int geraIdLivro() {
+        contadorLivro++;
+        return contadorLivro;
+    }
+
     private static String geraCodBarras() {
         Random rd = new Random();
         StringBuilder ean = new StringBuilder();
@@ -91,4 +101,5 @@ public class Livro {
         int resto = soma % 10;
         return (resto == 0) ? 0 : 10 - resto;
     }
+
 }
